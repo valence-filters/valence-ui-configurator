@@ -25,10 +25,12 @@
  * trackChange()
  * You can bind an onchange event directly to this method as long as your "name" attribute on the component matches a configuration property. This method will
  * read the changed value and set it on the configuration.
+ * Example: <lightning-input type="checkbox" name="active" onchange={trackChange}></lightning> will set configuration.active = boolean true or false
  *
  * debounceChange()
  * You can bind an onchange event directly to this method as long as your "name" attribute on the component matches a configuration property. This method will
  * read the changed value and set it on the configuration after a short delay (that's the debounce part).
+ * Example: <lightning-input name="flavor" onchange={debounceChange}></lightning> will set configuration.flavor = user's input
  *
  * debounce()
  * Available to you if you need to wrap your own logic around handling a value, but would still like to take advantage of debounce behavior.
@@ -108,6 +110,10 @@ export default class ValenceUIConfigurator extends LightningElement {
 		}
 	}
 
+	/**
+	 * Invoke this method in order to notify Valence that you have made changes to the configuration. This triggers things like showing the Save/Discard buttons
+	 * if the state is dirty, and calling your computeValid() method to check if the Save button should be enabled or disabled.
+	 */
 	configUpdated() {
 		this.dispatchEvent(new CustomEvent('updateconfig', {
 			detail : {
