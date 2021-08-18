@@ -11,6 +11,10 @@
  * boolean computeValid()
  * - Return a true/false boolean for whether the current configuration of the component is valid, which allows the User to save it to the server
  *
+ * There's a special method for you to call every time you mutate the configuration so that the container above us gets the change.
+ *
+ * void configUpdated()
+ *
  * There are several lifecycle hooks you can use if you want to react to properties being set. Otherwise just use connectedCallback() to inspect the properties
  * as you are doing first-time setup on your component.
  *
