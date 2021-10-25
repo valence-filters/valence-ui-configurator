@@ -40,14 +40,14 @@
  * Available to you if you need to wrap your own logic around handling a value, but would still like to take advantage of debounce behavior.
  */
 
-import {api, LightningElement} from 'lwc';
+import {api, track, LightningElement} from 'lwc';
 
 export default class ValenceUIConfigurator extends LightningElement {
 
 	_link = {}; // info about the Link
 	_schema = {}; // info about the source and target schemas
 	_mapping = {}; // info about the mapping, if this configuration is tied to a single mapping
-	_configuration = {}; // the current configuration
+	@track _configuration = {}; // the current configuration
 
 	constructor() {
 		super();
