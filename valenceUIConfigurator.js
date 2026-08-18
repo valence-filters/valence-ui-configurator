@@ -118,11 +118,11 @@ export default class ValenceUIConfigurator extends LightningElement {
 	 * Invoke this method in order to notify Valence that you have made changes to the configuration. This triggers things like showing the Save/Discard buttons
 	 * if the state is dirty, and calling your computeValid() method to check if the Save button should be enabled or disabled.
 	 */
-	configUpdated() {
+	async configUpdated() {
 		this.dispatchEvent(new CustomEvent('updateconfig', {
 			detail : {
 				newValue : this.tweakConfiguration ? this.tweakConfiguration() : this.configuration,
-				isValid : this.computeValid()
+				isValid : await this.computeValid()
 			}
 		}));
 	}
